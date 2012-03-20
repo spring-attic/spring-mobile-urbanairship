@@ -1,0 +1,34 @@
+[
+    {
+        "name": "com.foo.bar",
+        "key": "XYZ123",
+        "secret": "F89X12",
+        "master_secret": "AbC232",
+        "push_service_status": "development",
+        "push_status": "none",
+        "storekit_mode": "disabled",
+        "app_url": "https://go.urbanairship.com/api/partner/apps/XYZ123",
+        "android_package_name": "com.foo.bar",
+        "c2dm_auth_token": "c2dmToken",
+        "blackberry_username": "bbUser",
+        "blackberry_password": "bbPassword",
+        "blackberry_pushurl": "http://bbpush.com",
+        "richpush_enabled": false
+    },
+    {
+        "name": "com.foo.baz",
+        "key": "ABC321",
+        "secret": "53CR3T",
+        "master_secret": "B1G53CR3T",
+        "push_service_status": "production",
+        "push_status": "ready",
+        "storekit_mode": "disabled",
+        "app_url": "https://go.urbanairship.com/api/partner/apps/ABC321",
+        "android_package_name": "com.foo.baz",
+        "c2dm_auth_token": "c2dmToken",
+        "blackberry_username": "bbUser",
+        "blackberry_password": "bbPassword",
+        "blackberry_pushurl": "http://bbpush.com",
+        "richpush_enabled": false
+    }    
+]

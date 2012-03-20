@@ -1,0 +1,12 @@
+{
+    "device_pins":{
+        "add":[
+            "pin1",
+            "pin2"
+        ],
+        "remove":[
+            "pin3",
+            "pin4"
+        ]
+    }
+}

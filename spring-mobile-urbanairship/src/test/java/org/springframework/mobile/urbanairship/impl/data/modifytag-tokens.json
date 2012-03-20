@@ -1,0 +1,12 @@
+{
+    "device_tokens":{
+        "add":[
+            "token1",
+            "token2"
+        ],
+        "remove":[
+            "token3",
+            "token4"
+        ]
+    }
+}

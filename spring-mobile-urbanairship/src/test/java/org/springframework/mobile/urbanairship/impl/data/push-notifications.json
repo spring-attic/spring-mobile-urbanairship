@@ -1,0 +1,15 @@
+[
+	{
+		"device_tokens":["token1","token2"],
+		"aps":{"alert":"Hey!"}
+	},
+	{
+		"aliases":["alias1","alias2"],
+		"aps":{"alert":"Yo!"},
+		"android":{"alert":"Yo!"},
+		"blackberry":{
+			"content-type":"text/plain",
+			"body":"Yo!"
+		}
+	}
+]

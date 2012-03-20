@@ -1,0 +1,7 @@
+{
+	"device_pins":["pin1","pin2","pin3"],
+	"blackberry":{
+		"content-type":"text/plain",
+		"body":"Hey!"
+	}
+}

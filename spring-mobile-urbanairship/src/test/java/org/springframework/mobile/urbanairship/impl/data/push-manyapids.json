@@ -1,0 +1,4 @@
+{
+	"apids":["apid1","apid2","apid3"],
+	"android":{"alert":"Hey!"}
+}

@@ -1,0 +1,8 @@
+{
+	"aps":{"alert":"Hey!"},
+	"android":{"alert":"Hey!"},
+	"blackberry":{
+		"content-type":"text/plain",
+		"body":"Hey!"
+	}
+}

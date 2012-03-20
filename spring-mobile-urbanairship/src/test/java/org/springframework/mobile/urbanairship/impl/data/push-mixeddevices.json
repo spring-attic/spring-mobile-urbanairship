@@ -1,0 +1,11 @@
+{
+	"device_tokens":["token1","token2","token3"],
+	"apids":["apid1","apid2","apid3"],
+	"device_pins":["pin1","pin2","pin3"],
+	"aps":{"alert":"Hey!"},
+	"android":{"alert":"Hey!"},
+	"blackberry":{
+		"content-type":"text/plain",
+		"body":"Hey!"
+	}
+}

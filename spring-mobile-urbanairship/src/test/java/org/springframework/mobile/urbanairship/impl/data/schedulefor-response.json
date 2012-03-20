@@ -1,0 +1,6 @@
+{
+    "scheduled_notifications": [
+        "https://go.urbanairship.com/api/push/scheduled/XX",
+        "https://go.urbanairship.com/api/push/scheduled/XY"
+    ]
+}

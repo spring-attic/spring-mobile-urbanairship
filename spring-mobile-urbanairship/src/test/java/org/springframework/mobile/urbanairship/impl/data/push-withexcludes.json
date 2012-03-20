@@ -1,0 +1,10 @@
+{
+	"tags":["tag1"],
+	"exclude_tokens":["token1","token2","token3"],
+	"aps":{"alert":"Hey!"},
+	"android":{"alert":"Hey!"},
+	"blackberry":{
+		"content-type":"text/plain",
+		"body":"Hey!"
+	}
+}

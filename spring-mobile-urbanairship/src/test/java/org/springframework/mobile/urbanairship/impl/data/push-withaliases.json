@@ -1,0 +1,9 @@
+{
+	"aliases":["alias1","alias2","alias3"],
+	"aps":{"alert":"Hey!"},
+	"android":{"alert":"Hey!"},
+	"blackberry":{
+		"content-type":"text/plain",
+		"body":"Hey!"
+	}
+}

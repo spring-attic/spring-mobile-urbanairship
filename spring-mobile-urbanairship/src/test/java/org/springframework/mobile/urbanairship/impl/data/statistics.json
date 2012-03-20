@@ -1,0 +1,44 @@
+[
+    {
+        "bb_messages": 0,
+        "start": "2012-03-10 00:00:00",
+        "android_messages": 0,
+        "c2dm_messages": 0,
+        "messages": 0
+    },
+    {
+        "bb_messages": 2,
+        "start": "2012-03-10 01:00:00",
+        "android_messages": 1,
+        "c2dm_messages": 3,
+        "messages": 6
+    },
+    {
+        "bb_messages": 4,
+        "start": "2012-03-10 02:00:00",
+        "android_messages": 2,
+        "c2dm_messages": 6,
+        "messages": 12
+    },
+    {
+        "bb_messages": 6,
+        "start": "2012-03-10 03:00:00",
+        "android_messages": 3,
+        "c2dm_messages": 9,
+        "messages": 18
+    },
+    {
+        "bb_messages": 8,
+        "start": "2012-03-10 04:00:00",
+        "android_messages": 4,
+        "c2dm_messages": 12,
+        "messages": 24
+    },
+    {
+        "bb_messages": 10,
+        "start": "2012-03-10 05:00:00",
+        "android_messages": 5,
+        "c2dm_messages": 15,
+        "messages": 30
+    }
+]

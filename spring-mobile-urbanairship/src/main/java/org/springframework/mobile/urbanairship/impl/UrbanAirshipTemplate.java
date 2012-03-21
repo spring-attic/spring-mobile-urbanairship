@@ -32,6 +32,7 @@ import org.springframework.mobile.urbanairship.PushOperations;
 import org.springframework.mobile.urbanairship.RegistrationOperations;
 import org.springframework.mobile.urbanairship.TagOperations;
 import org.springframework.mobile.urbanairship.UrbanAirship;
+import org.springframework.mobile.urbanairship.UserOperations;
 import org.springframework.mobile.urbanairship.impl.json.UrbanAirshipModule;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
@@ -45,6 +46,8 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 	private RegistrationOperations registrationOperations;
 	
 	private TagOperations tagOperations;
+	
+	private UserOperations userOperations;
 
 	private RestTemplate restTemplate;
 	
@@ -79,6 +82,10 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 	
 	public TagOperations tagOperations() {
 		return tagOperations;
+	}
+	
+	public UserOperations userOperations() {
+		return userOperations;
 	}
 
 	public RestOperations masterKeyRestOperations() {
@@ -123,6 +130,7 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 		pushOperations = new PushTemplate(masterKeyRestOperations());
 		registrationOperations = new RegistrationTemplate(restOperations());
 		tagOperations = new TagTemplate(restOperations());
+		userOperations = new UserTemplate(masterKeyRestTemplate);
 	}
 	
 	static final String URBANAIRSHIP_API_URL = "https://go.urbanairship.com/api/";

@@ -1,0 +1,7 @@
+{
+    "airmail":true,
+    "alias":"alias",
+    "tags":["tag1","tag2"],
+    "device_tokens":["token1","token2"],
+    "udid":"udid"
+}

@@ -17,30 +17,30 @@ package org.springframework.mobile.urbanairship.impl.json;
 
 import java.util.List;
 
-import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-abstract class BlackberryDeviceConfigMixin {
+@JsonPropertyOrder({"airmail","alias","tags","device_tokens","udid"})
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+public class UserConfigMixin {
+
+	@JsonProperty("airmail")
+	boolean airmail;
 	
-	@JsonCreator
-	BlackberryDeviceConfigMixin(String deviceToken) {}
-
-	@JsonIgnore
-	String devicePin;
-
-	@JsonIgnore
-	String deviceToken;
-
 	@JsonProperty("alias")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 	String alias;
 	
 	@JsonProperty("tags")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 	List<String> tags;
 	
+	@JsonProperty("device_tokens")
+	List<String> deviceTokens;
+	
+	@JsonProperty("udid")
+	String udid;
+
 	@JsonIgnore
 	boolean empty;
 

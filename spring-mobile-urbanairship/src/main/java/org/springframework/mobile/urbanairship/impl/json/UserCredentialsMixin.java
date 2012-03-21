@@ -15,33 +15,17 @@
  */
 package org.springframework.mobile.urbanairship.impl.json;
 
-import java.util.List;
-
 import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-abstract class BlackberryDeviceConfigMixin {
-	
+@JsonIgnoreProperties(ignoreUnknown=true)
+abstract class UserCredentialsMixin {
+
 	@JsonCreator
-	BlackberryDeviceConfigMixin(String deviceToken) {}
-
-	@JsonIgnore
-	String devicePin;
-
-	@JsonIgnore
-	String deviceToken;
-
-	@JsonProperty("alias")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String alias;
+	UserCredentialsMixin(
+			@JsonProperty("user_url") String userUrl, 
+			@JsonProperty("user_id") String userId, 
+			@JsonProperty("password") String password) {}
 	
-	@JsonProperty("tags")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	List<String> tags;
-	
-	@JsonIgnore
-	boolean empty;
-
 }

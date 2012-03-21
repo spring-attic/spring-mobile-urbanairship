@@ -15,16 +15,30 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+public class UserCredentials {
 
-public interface UrbanAirship {
+	private final String userUrl;
+	
+	private final String userId;
+	
+	private final String password;
+	
+	private UserCredentials(String userUrl, String userId, String password) {
+		this.userUrl = userUrl;
+		this.userId = userId;
+		this.password = password;
+	}
+	
+	public String getUserUrl() {
+		return userUrl;
+	}
 
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	UserOperations userOperations();
+	public String getUserId() {
+		return userId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
 
 }

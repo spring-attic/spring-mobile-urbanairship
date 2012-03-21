@@ -32,6 +32,8 @@ import org.springframework.mobile.urbanairship.IOSDeviceConfig;
 import org.springframework.mobile.urbanairship.Notification;
 import org.springframework.mobile.urbanairship.PushResponse;
 import org.springframework.mobile.urbanairship.PushStatistics;
+import org.springframework.mobile.urbanairship.UserConfig;
+import org.springframework.mobile.urbanairship.UserCredentials;
 import org.springframework.mobile.urbanairship.impl.TagTemplate.AddRemove;
 import org.springframework.mobile.urbanairship.impl.TagTemplate.ModifyTags;
 
@@ -60,6 +62,8 @@ public class UrbanAirshipModule extends SimpleModule {
 		context.setMixInAnnotations(Notification.class, NotificationMixin.class);
 		context.setMixInAnnotations(PushResponse.class, PushResponseMixin.class);
 		context.setMixInAnnotations(PushStatistics.class, PushStatisticsMixin.class);
+		context.setMixInAnnotations(UserConfig.class, UserConfigMixin.class);
+		context.setMixInAnnotations(UserCredentials.class, UserCredentialsMixin.class);
 	}
 	
 }

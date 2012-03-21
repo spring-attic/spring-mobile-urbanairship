@@ -15,16 +15,16 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+public interface UserOperations {
 
-public interface UrbanAirship {
+	UserCredentials createUser();
+	
+	UserCredentials createUser(UserConfig userConfig);
+	
+	void modifyUser(String userId, UserConfig userConfig);
 
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	UserOperations userOperations();
+	void resetPassword(String userId);
 
+	void deleteUser(String userId);
+	
 }

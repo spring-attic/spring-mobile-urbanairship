@@ -21,9 +21,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.mobile.urbanairship.AndroidDevice;
 import org.springframework.mobile.urbanairship.AndroidDeviceConfig;
+import org.springframework.mobile.urbanairship.BlackberryDevice;
 import org.springframework.mobile.urbanairship.BlackberryDeviceConfig;
-import org.springframework.mobile.urbanairship.Device;
+import org.springframework.mobile.urbanairship.IOSDevice;
 import org.springframework.mobile.urbanairship.IOSDeviceConfig;
 import org.springframework.mobile.urbanairship.RegistrationOperations;
 import org.springframework.web.client.RestOperations;
@@ -69,15 +71,30 @@ public class RegistrationTemplate implements RegistrationOperations {
 		}
 	}
 
-	public Device getiOSDevice(String deviceToken) {
-		return restOperations.getForObject(DEVICE_TOKENS_URL + deviceToken, Device.class);
+	public IOSDevice getIOSDevice(String deviceToken) {
+		return restOperations.getForObject(DEVICE_TOKENS_URL + deviceToken, IOSDevice.class);
 	}
 	
-	public void removeiOSDevice(String deviceToken) {
+	public AndroidDevice getAndroidDevice(String apid) {
+		return restOperations.getForObject(APIDS_URL + apid, AndroidDevice.class);
+	}
+	
+	public BlackberryDevice getBlackberryDevice(String devicePin) {
+		return restOperations.getForObject(DEVICE_PINS_URL + devicePin, BlackberryDevice.class);
+	}
+	
+	public void removeIOSDevice(String deviceToken) {
 		restOperations.delete(DEVICE_TOKENS_URL + deviceToken);
 	}
 
-	
+	public void removeAndroidDevice(String apid) {
+		restOperations.delete(APIDS_URL + apid);
+	}
+
+	public void removeBlackberryDevice(String devicePin) {
+		restOperations.delete(DEVICE_PINS_URL + devicePin);
+	}
+
 	private static final String DEVICE_TOKENS_URL = URBANAIRSHIP_API_URL + "device_tokens/";
 
 	private static final String APIDS_URL = URBANAIRSHIP_API_URL + "apids/";

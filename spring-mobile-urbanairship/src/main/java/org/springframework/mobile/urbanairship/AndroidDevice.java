@@ -18,44 +18,44 @@ package org.springframework.mobile.urbanairship;
 import java.util.Date;
 import java.util.List;
 
-public class Device {
+public class AndroidDevice {
 
-	private final String deviceToken;
+	private final List<String> apids;
 	
 	private final String alias;
 	
 	private final List<String> tags;
 	
-	private final int badge;
+	private final Date created;
 	
-	private final Date lastRegistration;
+	private final boolean active;
 	
-	public Device(String deviceToken, String alias, List<String> tags, int badge, Date lastRegistration) {
-		this.deviceToken = deviceToken;
+	public AndroidDevice(List<String> apids, String alias, List<String> tags, Date created, boolean active) {
+		this.apids = apids;
 		this.alias = alias;
 		this.tags = tags;
-		this.badge = badge;
-		this.lastRegistration = lastRegistration;		
+		this.created = created;		
+		this.active = active;
 	}
 	
-	public String getDeviceToken() {
-		return deviceToken;
+	public List<String> getApids() {
+		return apids;
 	}
 
 	public String getAlias() {
 		return alias;
 	}
 
-	public Date getLastRegistration() {
-		return lastRegistration;
+	public Date getCreated() {
+		return created;
 	}
 
 	public List<String> getTags() {
 		return tags;
 	}
 
-	public int getBadge() {
-		return badge;
+	public boolean isActive() {
+		return active;
 	}
 
 }

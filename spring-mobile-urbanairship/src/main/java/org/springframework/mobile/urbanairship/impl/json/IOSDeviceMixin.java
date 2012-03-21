@@ -24,10 +24,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DeviceMixin {
+public class IOSDeviceMixin {
 
 	@JsonCreator
-	DeviceMixin(
+	IOSDeviceMixin(
 			@JsonProperty("device_token") String deviceToken, 
 			@JsonProperty("alias") String alias, 
 			@JsonProperty("tags") List<String> tags, 

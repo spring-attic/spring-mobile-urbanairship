@@ -1,0 +1,11 @@
+{
+    "device_pin":"pin1",
+    "alias":"myalias",
+    "last_registration":"2009-11-06 20:41:06",
+    "created":"2009-11-06 20:41:06",
+    "active":true,
+    "tags":[
+        "tag1",
+        "tag2"
+    ]
+}

@@ -23,9 +23,16 @@ public interface RegistrationOperations {
 
 	void registerBlackberryDevice(BlackberryDeviceConfig deviceConfig);
 
-	Device getiOSDevice(String deviceToken);
+	IOSDevice getIOSDevice(String deviceToken);
 	
-	void removeiOSDevice(String deviceToken);
+	AndroidDevice getAndroidDevice(String apid);
+	
+	BlackberryDevice getBlackberryDevice(String devicePin);
+	
+	void removeIOSDevice(String deviceToken);
 
+	void removeAndroidDevice(String apid);
+
+	void removeBlackberryDevice(String devicePin);
 
 }

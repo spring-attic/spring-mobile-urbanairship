@@ -18,14 +18,16 @@ package org.springframework.mobile.urbanairship.impl.json;
 import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.mobile.urbanairship.Android;
+import org.springframework.mobile.urbanairship.AndroidDevice;
 import org.springframework.mobile.urbanairship.AndroidDeviceConfig;
 import org.springframework.mobile.urbanairship.Application;
 import org.springframework.mobile.urbanairship.ApplicationData;
 import org.springframework.mobile.urbanairship.Aps;
 import org.springframework.mobile.urbanairship.Blackberry;
+import org.springframework.mobile.urbanairship.BlackberryDevice;
 import org.springframework.mobile.urbanairship.BlackberryDeviceConfig;
 import org.springframework.mobile.urbanairship.Broadcast;
-import org.springframework.mobile.urbanairship.Device;
+import org.springframework.mobile.urbanairship.IOSDevice;
 import org.springframework.mobile.urbanairship.IOSDeviceConfig;
 import org.springframework.mobile.urbanairship.Notification;
 import org.springframework.mobile.urbanairship.PushResponse;
@@ -42,14 +44,16 @@ public class UrbanAirshipModule extends SimpleModule {
 	@Override
 	public void setupModule(SetupContext context) {
 		context.setMixInAnnotations(Android.class, AndroidMixin.class);
+		context.setMixInAnnotations(AndroidDevice.class, AndroidDeviceMixin.class);
 		context.setMixInAnnotations(AndroidDeviceConfig.class, AndroidDeviceConfigMixin.class);
 		context.setMixInAnnotations(Application.class, ApplicationMixin.class);
 		context.setMixInAnnotations(ApplicationData.class, ApplicationDataMixin.class);
 		context.setMixInAnnotations(Aps.class, ApsMixin.class);
 		context.setMixInAnnotations(Blackberry.class, BlackberryMixin.class);
+		context.setMixInAnnotations(BlackberryDevice.class, BlackberryDeviceMixin.class);
 		context.setMixInAnnotations(BlackberryDeviceConfig.class, BlackberryDeviceConfigMixin.class);
 		context.setMixInAnnotations(Broadcast.class, BroadcastMixin.class);
-		context.setMixInAnnotations(Device.class, DeviceMixin.class);
+		context.setMixInAnnotations(IOSDevice.class, IOSDeviceMixin.class);
 		context.setMixInAnnotations(IOSDeviceConfig.class, IOSDeviceConfigMixin.class);
 		context.setMixInAnnotations(ModifyTags.class, ModifyTagsMixin.class);
 		context.setMixInAnnotations(AddRemove.class, ModifyTagsMixin.AddRemoveMixin.class);

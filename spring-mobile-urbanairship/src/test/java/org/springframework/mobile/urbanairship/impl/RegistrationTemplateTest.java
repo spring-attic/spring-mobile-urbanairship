@@ -22,9 +22,11 @@ import static org.springframework.test.web.client.ResponseCreators.*;
 
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
+import org.springframework.mobile.urbanairship.AndroidDevice;
 import org.springframework.mobile.urbanairship.AndroidDeviceConfig;
+import org.springframework.mobile.urbanairship.BlackberryDevice;
 import org.springframework.mobile.urbanairship.BlackberryDeviceConfig;
-import org.springframework.mobile.urbanairship.Device;
+import org.springframework.mobile.urbanairship.IOSDevice;
 import org.springframework.mobile.urbanairship.IOSDeviceConfig;
 
 public class RegistrationTemplateTest extends AbstractUrbanAirshipApiTest {
@@ -97,11 +99,11 @@ public class RegistrationTemplateTest extends AbstractUrbanAirshipApiTest {
 	}
 
 	@Test
-	public void getDevice() {
+	public void getIOSDevice() {
 		mockServer.expect(requestTo("https://go.urbanairship.com/api/device_tokens/" + DEVICE_TOKEN))
 			.andExpect(method(GET))
-			.andRespond(withResponse(jsonResource("data/token"), responseHeaders, HttpStatus.OK, "OK"));
-		Device device = urbanAirship.registrationOperations().getiOSDevice(DEVICE_TOKEN);
+			.andRespond(withResponse(jsonResource("data/device-ios"), responseHeaders, HttpStatus.OK, "OK"));
+		IOSDevice device = urbanAirship.registrationOperations().getIOSDevice(DEVICE_TOKEN);
 
 		assertEquals(DEVICE_TOKEN, device.getDeviceToken());
 		assertEquals("habuma", device.getAlias());
@@ -114,11 +116,11 @@ public class RegistrationTemplateTest extends AbstractUrbanAirshipApiTest {
 	}
 	
 	@Test
-	public void removeDevice() {
+	public void removeIOSDevice() {
 		mockServer.expect(requestTo("https://go.urbanairship.com/api/device_tokens/" + DEVICE_TOKEN))
 			.andExpect(method(DELETE))
 			.andRespond(withResponse("", responseHeaders, HttpStatus.NO_CONTENT, "No Content"));
-		urbanAirship.registrationOperations().removeiOSDevice(DEVICE_TOKEN);
+		urbanAirship.registrationOperations().removeIOSDevice(DEVICE_TOKEN);
 		mockServer.verify();
 	}
 	
@@ -143,6 +145,32 @@ public class RegistrationTemplateTest extends AbstractUrbanAirshipApiTest {
 		mockServer.verify();
 	}
 	
+	@Test
+	public void getAndroidDevice() {
+		mockServer.expect(requestTo("https://go.urbanairship.com/api/apids/apid1"))
+			.andExpect(method(GET))
+			.andRespond(withResponse(jsonResource("data/device-android"), responseHeaders, HttpStatus.OK, "OK"));
+		AndroidDevice device = urbanAirship.registrationOperations().getAndroidDevice("apid1");
+		assertEquals(1, device.getApids().size());
+		assertEquals("apid1", device.getApids().get(0));
+		assertEquals("myalias", device.getAlias());
+		assertTrue(device.isActive());
+		assertEquals(2, device.getTags().size());
+		assertEquals("tag1", device.getTags().get(0));
+		assertEquals("tag2", device.getTags().get(1));
+		assertEquals(1257561666000L, device.getCreated().getTime());
+		mockServer.verify();		
+	}
+	
+	@Test
+	public void removeAndroidDevice() {
+		mockServer.expect(requestTo("https://go.urbanairship.com/api/apids/apid1"))
+			.andExpect(method(DELETE))
+			.andRespond(withResponse("", responseHeaders, HttpStatus.NO_CONTENT, "No Content"));
+		urbanAirship.registrationOperations().removeAndroidDevice("apid1");
+		mockServer.verify();
+	}
+
 	// Blackberry
 	@Test
 	public void registerBlackberryDevice_apidOnly() {
@@ -161,6 +189,32 @@ public class RegistrationTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/registration-aliasandtags"))))
 			.andRespond(withResponse("", responseHeaders, HttpStatus.CREATED, "Created"));
 		urbanAirship.registrationOperations().registerBlackberryDevice(BlackberryDeviceConfig.builder("pin1").alias("alias1").tags("tag1", "tag2").build());
+		mockServer.verify();
+	}
+
+	@Test
+	public void getBlackberryDevice() {
+		mockServer.expect(requestTo("https://go.urbanairship.com/api/device_pins/pin1"))
+			.andExpect(method(GET))
+			.andRespond(withResponse(jsonResource("data/device-blackberry"), responseHeaders, HttpStatus.OK, "OK"));
+		BlackberryDevice device = urbanAirship.registrationOperations().getBlackberryDevice("pin1");
+
+		assertEquals("pin1", device.getDevicePin());
+		assertEquals("myalias", device.getAlias());
+		assertEquals(2, device.getTags().size());
+		assertEquals("tag1", device.getTags().get(0));
+		assertEquals("tag2", device.getTags().get(1));
+		assertEquals(1257561666000L, device.getLastRegistration().getTime());
+		assertEquals(1257561666000L, device.getCreated().getTime());
+		mockServer.verify();
+	}
+
+	@Test
+	public void removeBlackberryDevice() {
+		mockServer.expect(requestTo("https://go.urbanairship.com/api/device_pins/pin1"))
+			.andExpect(method(DELETE))
+			.andRespond(withResponse("", responseHeaders, HttpStatus.NO_CONTENT, "No Content"));
+		urbanAirship.registrationOperations().removeBlackberryDevice("pin1");
 		mockServer.verify();
 	}
 

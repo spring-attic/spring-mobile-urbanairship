@@ -36,6 +36,7 @@ import org.springframework.mobile.urbanairship.UserConfig;
 import org.springframework.mobile.urbanairship.UserCredentials;
 import org.springframework.mobile.urbanairship.impl.TagTemplate.AddRemove;
 import org.springframework.mobile.urbanairship.impl.TagTemplate.ModifyTags;
+import org.springframework.mobile.urbanairship.impl.UserTemplate.RecoveryRequest;
 
 public class UrbanAirshipModule extends SimpleModule {
 
@@ -62,6 +63,7 @@ public class UrbanAirshipModule extends SimpleModule {
 		context.setMixInAnnotations(Notification.class, NotificationMixin.class);
 		context.setMixInAnnotations(PushResponse.class, PushResponseMixin.class);
 		context.setMixInAnnotations(PushStatistics.class, PushStatisticsMixin.class);
+		context.setMixInAnnotations(RecoveryRequest.class, RecoveryRequestMixin.class);
 		context.setMixInAnnotations(RecoveryResponse.class, RecoveryResponseMixin.class);
 		context.setMixInAnnotations(UserConfig.class, UserConfigMixin.class);
 		context.setMixInAnnotations(UserCredentials.class, UserCredentialsMixin.class);

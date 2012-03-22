@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 the original author or authors.
+ * Copyright 2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,21 +66,36 @@ public class UserTemplate implements UserOperations {
 	}
 	
 	public String recoverAccount(String emailAddress) {
-		return restOperations.postForObject(USER_URL + "/recover", new RecoverRequest(emailAddress), RecoveryResponse.class).getRecoveryStatusId();
+		return restOperations.postForObject(USER_URL + "/recover", new RecoveryRequest(emailAddress), RecoveryResponse.class).getRecoveryStatusId();
 	}
-	
-	private static final String USER_URL = URBANAIRSHIP_API_URL + "user";
 
+	public String recoverAccount(String emailAddress, String udid) {
+		return restOperations.postForObject(USER_URL + "/recover", new RecoveryRequest(emailAddress, udid), RecoveryResponse.class).getRecoveryStatusId();
+	}
+
+	private static final String USER_URL = URBANAIRSHIP_API_URL + "user";
 	
-	private static class RecoverRequest {
-		private String email;
+	public static class RecoveryRequest {
 		
-		public RecoverRequest(String email) {
+		private final String email;
+		
+		private final String udid;
+		
+		public RecoveryRequest(String email) {
+			this(email, null);
+		}
+		
+		public RecoveryRequest(String email, String udid) {
 			this.email = email;
+			this.udid = udid;
 		}
 		
 		public String getEmail() {
 			return email;
+		}
+		
+		public String getUDID() {
+			return udid;
 		}
 	}
 }

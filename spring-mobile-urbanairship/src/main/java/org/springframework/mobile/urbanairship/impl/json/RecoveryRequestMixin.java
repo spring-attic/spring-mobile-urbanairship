@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 the original author or authors.
+ * Copyright 2011 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,22 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship;
+package org.springframework.mobile.urbanairship.impl.json;
 
-public interface UserOperations {
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-	UserCredentials createUser();
-	
-	UserCredentials createUser(UserConfig userConfig);
-	
-	void modifyUser(String userId, UserConfig userConfig);
+@JsonPropertyOrder({"email","udid"})
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+public class RecoveryRequestMixin {
 
-	void resetPassword(String userId);
-
-	void deleteUser(String userId);
+	@JsonProperty("email")
+	private String email;
 	
-	String recoverAccount(String emailAddress);
-	
-	String recoverAccount(String emailAddress, String udid);
+	@JsonProperty("udid")
+	String udid;
 
 }

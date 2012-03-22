@@ -45,7 +45,7 @@ public class UserTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(method(POST))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/user-config-complete"))))
 			.andRespond(withResponse(jsonResource("data/user-credentials"), responseHeaders, HttpStatus.CREATED, "Created"));
-		UserConfig userConfig = UserConfig.builder().airmail(true).alias("alias").deviceTokens("token1", "token2").tags("tag1", "tag2").udid("udid").build();
+		UserConfig userConfig = UserConfig.builder().airmail(true).alias("alias").deviceTokens("token1", "token2").tags("tag1", "tag2").udid("udid").email("someuser@somedomain.com").build();
 		UserCredentials credentials = urbanAirship.userOperations().createUser(userConfig);
 		assertEquals("https://go.urbanairship.com/api/user/someuser", credentials.getUserUrl());
 		assertEquals("someuser", credentials.getUserId());
@@ -59,7 +59,7 @@ public class UserTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(method(PUT))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/user-config-complete"))))
 			.andRespond(withResponse("", responseHeaders, HttpStatus.OK, "OK"));
-		UserConfig userConfig = UserConfig.builder().airmail(true).alias("alias").deviceTokens("token1", "token2").tags("tag1", "tag2").udid("udid").build();
+		UserConfig userConfig = UserConfig.builder().airmail(true).alias("alias").deviceTokens("token1", "token2").tags("tag1", "tag2").udid("udid").email("someuser@somedomain.com").build();
 		urbanAirship.userOperations().modifyUser("someuser", userConfig);
 		masterKeyMockServer.verify();
 	}
@@ -80,5 +80,16 @@ public class UserTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andRespond(withResponse("", responseHeaders, HttpStatus.OK, "OK"));
 		urbanAirship.userOperations().deleteUser("someuser");
 		masterKeyMockServer.verify();
+	}
+	
+	@Test
+	public void recoverAccount() {
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/user/recover"))
+			.andExpect(method(POST))
+			.andExpect(body(readCompactedJsonResource(jsonResource("data/user-recover"))))
+			.andRespond(withResponse(jsonResource("data/user-recover-response"), responseHeaders, HttpStatus.OK, "OK"));
+		String recoveryId = urbanAirship.userOperations().recoverAccount("someuser@somedomain.com");
+		assertEquals("1232134124", recoveryId);
+		masterKeyMockServer.verify();		
 	}
 }

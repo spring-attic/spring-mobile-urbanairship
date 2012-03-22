@@ -13,20 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship;
+package org.springframework.mobile.urbanairship.impl.json;
 
-public interface UserOperations {
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
 
-	UserCredentials createUser();
-	
-	UserCredentials createUser(UserConfig userConfig);
-	
-	void modifyUser(String userId, UserConfig userConfig);
+@JsonIgnoreProperties(ignoreUnknown=true)
+abstract class RecoveryResponseMixin {
 
-	void resetPassword(String userId);
-
-	void deleteUser(String userId);
-	
-	String recoverAccount(String emailAddress);
+	@JsonCreator
+	RecoveryResponseMixin(
+			@JsonProperty("recovery_status_url") String recoveryStatusUrl) {}
 	
 }

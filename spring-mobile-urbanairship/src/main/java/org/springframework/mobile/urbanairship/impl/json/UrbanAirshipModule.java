@@ -62,6 +62,7 @@ public class UrbanAirshipModule extends SimpleModule {
 		context.setMixInAnnotations(Notification.class, NotificationMixin.class);
 		context.setMixInAnnotations(PushResponse.class, PushResponseMixin.class);
 		context.setMixInAnnotations(PushStatistics.class, PushStatisticsMixin.class);
+		context.setMixInAnnotations(RecoveryResponse.class, RecoveryResponseMixin.class);
 		context.setMixInAnnotations(UserConfig.class, UserConfigMixin.class);
 		context.setMixInAnnotations(UserCredentials.class, UserCredentialsMixin.class);
 	}

@@ -31,6 +31,8 @@ public class UserConfig {
 	
 	private String udid;
 	
+	private String email;
+	
 	private boolean empty;
 	
 	private UserConfig() {}
@@ -55,6 +57,10 @@ public class UserConfig {
 		return udid;
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+	
 	public boolean isEmpty() {
 		return empty;
 	}
@@ -69,6 +75,7 @@ public class UserConfig {
 		private List<String> tags;
 		private List<String> deviceTokens;
 		private String udid;
+		private String email;
 		private boolean empty = true;;
 
 		private UserConfigBuilder() {
@@ -108,6 +115,12 @@ public class UserConfig {
 			return this;
 		}
 		
+		public UserConfigBuilder email(String email) {
+			this.email = email;
+			this.empty = false;
+			return this;
+		}
+		
 		public UserConfig build() {
 			UserConfig config = new UserConfig();
 			config.airmail = airmail;
@@ -119,6 +132,7 @@ public class UserConfig {
 				config.deviceTokens = deviceTokens;
 			}
 			config.udid = udid;
+			config.email = email;
 			config.empty = empty;
 			return config;
 		}

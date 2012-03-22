@@ -24,6 +24,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mobile.urbanairship.UserConfig;
 import org.springframework.mobile.urbanairship.UserCredentials;
 import org.springframework.mobile.urbanairship.UserOperations;
+import org.springframework.mobile.urbanairship.impl.json.RecoveryResponse;
 import org.springframework.web.client.RestOperations;
 
 public class UserTemplate implements UserOperations {
@@ -64,6 +65,22 @@ public class UserTemplate implements UserOperations {
 		restOperations.delete(USER_URL + "/" + userId);
 	}
 	
+	public String recoverAccount(String emailAddress) {
+		return restOperations.postForObject(USER_URL + "/recover", new RecoverRequest(emailAddress), RecoveryResponse.class).getRecoveryStatusId();
+	}
+	
 	private static final String USER_URL = URBANAIRSHIP_API_URL + "user";
 
+	
+	private static class RecoverRequest {
+		private String email;
+		
+		public RecoverRequest(String email) {
+			this.email = email;
+		}
+		
+		public String getEmail() {
+			return email;
+		}
+	}
 }

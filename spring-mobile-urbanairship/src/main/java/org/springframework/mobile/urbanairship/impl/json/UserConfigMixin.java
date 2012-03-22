@@ -22,7 +22,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-@JsonPropertyOrder({"airmail","alias","tags","device_tokens","udid"})
+@JsonPropertyOrder({"airmail","alias","tags","device_tokens","email","udid"})
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class UserConfigMixin {
 
@@ -40,6 +40,9 @@ public class UserConfigMixin {
 	
 	@JsonProperty("udid")
 	String udid;
+	
+	@JsonProperty("email")
+	String email;
 
 	@JsonIgnore
 	boolean empty;

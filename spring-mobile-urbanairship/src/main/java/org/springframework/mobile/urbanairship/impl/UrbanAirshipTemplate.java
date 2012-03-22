@@ -30,6 +30,7 @@ import org.springframework.http.converter.json.MappingJacksonHttpMessageConverte
 import org.springframework.mobile.urbanairship.PartnerOperations;
 import org.springframework.mobile.urbanairship.PushOperations;
 import org.springframework.mobile.urbanairship.RegistrationOperations;
+import org.springframework.mobile.urbanairship.RichPushOperations;
 import org.springframework.mobile.urbanairship.TagOperations;
 import org.springframework.mobile.urbanairship.UrbanAirship;
 import org.springframework.mobile.urbanairship.UserOperations;
@@ -44,6 +45,8 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 	private PushOperations pushOperations;
 	
 	private RegistrationOperations registrationOperations;
+	
+	private RichPushOperations richPushOperations;
 	
 	private TagOperations tagOperations;
 	
@@ -74,6 +77,10 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 	
 	public RegistrationOperations registrationOperations() {
 		return registrationOperations;
+	}
+	
+	public RichPushOperations richPushOperations() {
+		return richPushOperations;
 	}
 	
 	public RestOperations restOperations() {
@@ -129,6 +136,7 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 		partnerOperations = new PartnerTemplate(restOperations());
 		pushOperations = new PushTemplate(masterKeyRestOperations());
 		registrationOperations = new RegistrationTemplate(restOperations());
+		richPushOperations = new RichPushTemplate(masterKeyRestTemplate);
 		tagOperations = new TagTemplate(restOperations());
 		userOperations = new UserTemplate(masterKeyRestTemplate);
 	}

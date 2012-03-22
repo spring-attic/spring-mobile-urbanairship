@@ -13,20 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship;
+package org.springframework.mobile.urbanairship.impl;
 
-import org.springframework.web.client.RestOperations;
-
-public interface UrbanAirship {
-
-	PartnerOperations partnerOperations();
+public class RecoveryRequest {
 	
-	PushOperations pushOperations();
+	private final String email;
 	
-	RestOperations restOperations();
+	private final String udid;
 	
-	RichPushOperations richPushOperations();
+	public RecoveryRequest(String email) {
+		this(email, null);
+	}
 	
-	UserOperations userOperations();
-
+	public RecoveryRequest(String email, String udid) {
+		this.email = email;
+		this.udid = udid;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public String getUDID() {
+		return udid;
+	}
 }

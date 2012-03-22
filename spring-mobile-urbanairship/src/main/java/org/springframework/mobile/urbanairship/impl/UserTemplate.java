@@ -27,7 +27,7 @@ import org.springframework.mobile.urbanairship.UserOperations;
 import org.springframework.mobile.urbanairship.impl.json.RecoveryResponse;
 import org.springframework.web.client.RestOperations;
 
-public class UserTemplate implements UserOperations {
+class UserTemplate implements UserOperations {
 
 	private final RestOperations restOperations;
 
@@ -74,28 +74,4 @@ public class UserTemplate implements UserOperations {
 	}
 
 	private static final String USER_URL = URBANAIRSHIP_API_URL + "user";
-	
-	public static class RecoveryRequest {
-		
-		private final String email;
-		
-		private final String udid;
-		
-		public RecoveryRequest(String email) {
-			this(email, null);
-		}
-		
-		public RecoveryRequest(String email, String udid) {
-			this.email = email;
-			this.udid = udid;
-		}
-		
-		public String getEmail() {
-			return email;
-		}
-		
-		public String getUDID() {
-			return udid;
-		}
-	}
 }

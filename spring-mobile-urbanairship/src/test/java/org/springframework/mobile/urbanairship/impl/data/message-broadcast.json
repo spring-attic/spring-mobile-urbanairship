@@ -1,0 +1,15 @@
+{
+	"push":{
+		"aps":{
+			"alert":"New message!",
+			"sound":"cat.caf"
+		}
+	},
+	"title":"title",
+	"message":"Hello",
+	"content_type":"text/html",
+	"extra":{
+		"key1":"value1",
+		"key2":"value2"
+	}
+}

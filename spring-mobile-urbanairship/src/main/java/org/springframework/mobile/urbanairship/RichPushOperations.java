@@ -15,18 +15,10 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+public interface RichPushOperations {
 
-public interface UrbanAirship {
+	void sendMessage(OutgoingMessage message);
 
-	PartnerOperations partnerOperations();
+	void sendBroadcast(OutgoingMessage message);
 	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
-
 }

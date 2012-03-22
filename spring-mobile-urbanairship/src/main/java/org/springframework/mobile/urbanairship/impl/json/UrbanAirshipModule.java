@@ -29,14 +29,15 @@ import org.springframework.mobile.urbanairship.BlackberryDeviceConfig;
 import org.springframework.mobile.urbanairship.Broadcast;
 import org.springframework.mobile.urbanairship.IOSDevice;
 import org.springframework.mobile.urbanairship.IOSDeviceConfig;
+import org.springframework.mobile.urbanairship.OutgoingMessage;
 import org.springframework.mobile.urbanairship.Notification;
 import org.springframework.mobile.urbanairship.PushResponse;
 import org.springframework.mobile.urbanairship.PushStatistics;
 import org.springframework.mobile.urbanairship.UserConfig;
 import org.springframework.mobile.urbanairship.UserCredentials;
+import org.springframework.mobile.urbanairship.impl.RecoveryRequest;
 import org.springframework.mobile.urbanairship.impl.TagTemplate.AddRemove;
 import org.springframework.mobile.urbanairship.impl.TagTemplate.ModifyTags;
-import org.springframework.mobile.urbanairship.impl.UserTemplate.RecoveryRequest;
 
 public class UrbanAirshipModule extends SimpleModule {
 
@@ -58,6 +59,7 @@ public class UrbanAirshipModule extends SimpleModule {
 		context.setMixInAnnotations(Broadcast.class, BroadcastMixin.class);
 		context.setMixInAnnotations(IOSDevice.class, IOSDeviceMixin.class);
 		context.setMixInAnnotations(IOSDeviceConfig.class, IOSDeviceConfigMixin.class);
+		context.setMixInAnnotations(OutgoingMessage.class, OutgoingMessageMixin.class);
 		context.setMixInAnnotations(ModifyTags.class, ModifyTagsMixin.class);
 		context.setMixInAnnotations(AddRemove.class, ModifyTagsMixin.AddRemoveMixin.class);
 		context.setMixInAnnotations(Notification.class, NotificationMixin.class);

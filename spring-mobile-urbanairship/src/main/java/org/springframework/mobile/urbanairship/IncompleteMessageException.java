@@ -15,18 +15,11 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+@SuppressWarnings("serial")
+public class IncompleteMessageException extends RuntimeException {
 
-public interface UrbanAirship {
-
-	PartnerOperations partnerOperations();
+	public IncompleteMessageException(String message) {
+		super(message);
+	}
 	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
-
 }

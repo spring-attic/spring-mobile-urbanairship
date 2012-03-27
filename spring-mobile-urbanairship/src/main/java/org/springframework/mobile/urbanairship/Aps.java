@@ -38,7 +38,7 @@ public class Aps {
 	public Object getBadge() {
 		return badge;
 	}
-
+	
 	public void setBadge(Object badge) {
 		this.badge = badge;
 	}

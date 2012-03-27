@@ -52,7 +52,5 @@ class RichPushTemplate implements RichPushOperations {
 		restOperations.exchange(AIRMAIL_URL + "/broadcast", HttpMethod.POST, requestEntity, String.class);
 	}
 	
-//	"https://go.urbanairship.com/api/airmail/send"
-	
 	private static final String AIRMAIL_URL = URBANAIRSHIP_API_URL + "airmail/send";
 }

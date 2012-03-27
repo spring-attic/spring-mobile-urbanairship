@@ -23,10 +23,14 @@ public class UserCredentials {
 	
 	private final String password;
 	
-	private UserCredentials(String userUrl, String userId, String password) {
-		this.userUrl = userUrl;
+	public UserCredentials(String userId, String password) {
+		this(userId, password, null);
+	}
+	
+	private UserCredentials(String userId, String password, String userUrl) {
 		this.userId = userId;
 		this.password = password;
+		this.userUrl = userUrl;
 	}
 	
 	public String getUserUrl() {

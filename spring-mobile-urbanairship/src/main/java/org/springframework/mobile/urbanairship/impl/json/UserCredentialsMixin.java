@@ -24,8 +24,8 @@ abstract class UserCredentialsMixin {
 
 	@JsonCreator
 	UserCredentialsMixin(
-			@JsonProperty("user_url") String userUrl, 
 			@JsonProperty("user_id") String userId, 
-			@JsonProperty("password") String password) {}
+			@JsonProperty("password") String password,
+			@JsonProperty("user_url") String userUrl) {}
 	
 }

@@ -89,24 +89,39 @@ public class Broadcast {
 			return this;
 		}
 		
+		/**
+		 * Sets the badge to a specific value.
+		 * @param badgeCount the value to set the badge to
+		 */
 		public BroadcastBuilder badge(int badgeCount) {
 			this.autoBadge = null;
 			this.badgeCount = badgeCount;
 			return this;
 		}
 		
+		/**
+		 * Sets the badge to "auto" to enable auto-badging.
+		 */
 		public BroadcastBuilder autoBadge() {
 			this.badgeCount = null;
 			this.autoBadge = "auto";
 			return this;
 		}
 
+		/**
+		 * Increments the badge by the given value.
+		 * @param count the amount to increment the badge by.
+		 */
 		public BroadcastBuilder badgeIncrement(int count) {
 			this.badgeCount = null;
 			this.autoBadge = "+" + count;
 			return this;
 		}
 
+		/**
+		 * Decrements the badge by the given value.
+		 * @param count the amount to decrement the badge by.
+		 */
 		public BroadcastBuilder badgeDecrement(int count) {
 			this.badgeCount = null;
 			this.autoBadge = "-" + count;

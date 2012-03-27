@@ -99,7 +99,7 @@ public class RichPushTemplateTest extends AbstractUrbanAirshipApiTest {
 		urbanAirship.richPushOperations().sendMessage(
 				OutgoingMessage.builder("Hello").users("user1","user2").aliases("alias1","alias2")
 					.tags("tag1","tag2").title("title").contentType("text/html").extra(extra)
-					.notify("New message!", "cat.caf", null).build());		
+					.notify("New message!", "cat.caf").build());		
 		masterKeyMockServer.verify();
 	}
 
@@ -114,7 +114,7 @@ public class RichPushTemplateTest extends AbstractUrbanAirshipApiTest {
 		extra.put("key2","value2");
 		urbanAirship.richPushOperations().sendBroadcast(
 				OutgoingMessage.builder("Hello").title("title").contentType("text/html").extra(extra)
-					.notify("New message!", "cat.caf", null).build());		
+					.notify("New message!", "cat.caf").build());		
 		masterKeyMockServer.verify();
 	}
 

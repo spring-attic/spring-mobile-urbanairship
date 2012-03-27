@@ -15,6 +15,7 @@
  */
 package org.springframework.mobile.urbanairship;
 
+
 public interface RichPushOperations {
 
 	void sendMessage(OutgoingMessage message);

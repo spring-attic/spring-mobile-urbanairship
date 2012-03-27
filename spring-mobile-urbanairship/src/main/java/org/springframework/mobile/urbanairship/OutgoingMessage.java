@@ -144,10 +144,9 @@ public class OutgoingMessage {
 			return this;
 		}		
 		
-		public OutgoingMessageBuilder notify(String alert, String sound, String badge) {
+		public OutgoingMessageBuilder notify(String alert, String sound) {
 			Aps aps = new Aps(alert);
 			aps.setSound(sound);
-			aps.setBadge(badge);
 			this.push = new Push(aps);
 			return this;
 		}

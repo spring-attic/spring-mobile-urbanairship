@@ -15,26 +15,22 @@
  */
 package org.springframework.mobile.urbanairship.impl.json;
 
+import java.util.Date;
+
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.springframework.mobile.urbanairship.FeedNotificationTemplate;
 
-abstract class ApsMixin {
+abstract class FeedMixin {
 
 	@JsonCreator
-	ApsMixin(
-		@JsonProperty("alert") String alert) {}
+	FeedMixin(
+		@JsonProperty("id") String id, 
+		@JsonProperty("url") String url, 
+		@JsonProperty("feed_url") String feedUrl, 
+		@JsonProperty("last_checked") @JsonDeserialize(using=DateDeserializer.class) Date lastChecked, 
+		@JsonProperty("template") FeedNotificationTemplate template, 
+		@JsonProperty("boolean") boolean broadcast) {}
 	
-	@JsonProperty("alert")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String alert;
-	
-	@JsonProperty("sound")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String sound;
-
-	@JsonProperty("badge")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	Object badge;
-
 }

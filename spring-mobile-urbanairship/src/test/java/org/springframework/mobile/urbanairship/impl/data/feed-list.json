@@ -1,0 +1,30 @@
+[
+	{
+	    "url": "https://go.urbanairship.com/api/feeds/12345/",
+	    "id": "12345",
+	    "last_checked": "2010-03-08 21:52:21",
+	    "feed_url": "http://example.com/atom.xml",
+	    "template": {
+	        "aps": {
+	            "badge": 1,
+	            "sound": "cat.caf",
+	            "alert": "New item from some place! {{ title }}"
+	        }
+	    },
+	    "broadcast": true
+	},
+	{
+	    "url": "https://go.urbanairship.com/api/feeds/54321/",
+	    "id": "54321",
+	    "last_checked": "2011-03-26 12:25:12",
+	    "feed_url": "http://anotherexample.com/feed.rss",
+	    "template": {
+	        "aps": {
+	            "badge": 2,
+	            "sound": "dog.caf",
+	            "alert": "New item from some place! {{ title }}"
+	        }
+	    },
+	    "broadcast": false
+	}
+]

@@ -1,0 +1,11 @@
+{
+    "feed_url":"http://example.com/atom.xml",
+    "template":{
+        "aps":{"alert":"New item from some place! {{ title }}"},
+        "android":{"alert":"New item from some place! {{ title }}"},
+		"blackberry":{
+			"content-type":"text/plain",
+			"body":"New item from some place! {{ title }}"
+		}
+    }
+}

@@ -13,28 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship.impl.json;
+package org.springframework.mobile.urbanairship;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import java.util.List;
 
-abstract class ApsMixin {
+public interface FeedOperations {
 
-	@JsonCreator
-	ApsMixin(
-		@JsonProperty("alert") String alert) {}
+	Feed createFeed(FeedConfig feedConfig);
+
+	Feed getFeed(String feedId);
+
+	List<Feed> getFeeds();
 	
-	@JsonProperty("alert")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String alert;
+	void updateFeed(String feedId, FeedConfig feedConfig);
+
+	void deleteFeed(String feedId);
 	
-	@JsonProperty("sound")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String sound;
-
-	@JsonProperty("badge")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	Object badge;
-
 }

@@ -13,28 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship.impl.json;
+package org.springframework.mobile.urbanairship;
 
-import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-abstract class ApsMixin {
+public class FeedNotificationTemplate {
 
-	@JsonCreator
-	ApsMixin(
-		@JsonProperty("alert") String alert) {}
+	@JsonProperty("aps")
+	private Aps aps;
+
+	@JsonProperty("android")
+	private Android android;
+
+	@JsonProperty("blackberry")
+	private Blackberry blackberry;
+
+	public FeedNotificationTemplate(Aps aps, Android android, Blackberry blackberry) {
+		this.aps = aps;
+		this.android = android;
+		this.blackberry = blackberry;
+	}
+
+	public Aps getAps() {
+		return aps;
+	}
 	
-	@JsonProperty("alert")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String alert;
+	public Android getAndroid() {
+		return android;
+	}
 	
-	@JsonProperty("sound")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String sound;
-
-	@JsonProperty("badge")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	Object badge;
+	public Blackberry getBlackberry() {
+		return blackberry;
+	}
 
 }

@@ -17,24 +17,16 @@ package org.springframework.mobile.urbanairship.impl.json;
 
 import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.springframework.mobile.urbanairship.Android;
+import org.springframework.mobile.urbanairship.Aps;
+import org.springframework.mobile.urbanairship.Blackberry;
 
-abstract class ApsMixin {
+abstract class FeedNotificationTemplateMixin {
 
 	@JsonCreator
-	ApsMixin(
-		@JsonProperty("alert") String alert) {}
+	FeedNotificationTemplateMixin(
+		@JsonProperty("aps") Aps aps,
+		@JsonProperty("android") Android android,
+		@JsonProperty("blackberry") Blackberry blackberry) {}
 	
-	@JsonProperty("alert")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String alert;
-	
-	@JsonProperty("sound")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	String sound;
-
-	@JsonProperty("badge")
-	@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
-	Object badge;
-
 }

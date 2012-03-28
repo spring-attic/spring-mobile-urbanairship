@@ -19,6 +19,8 @@ import org.springframework.web.client.RestOperations;
 
 public interface UrbanAirship {
 
+	FeedOperations feedOperations();
+	
 	PartnerOperations partnerOperations();
 	
 	PushOperations pushOperations();

@@ -27,6 +27,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.mobile.urbanairship.FeedOperations;
 import org.springframework.mobile.urbanairship.PartnerOperations;
 import org.springframework.mobile.urbanairship.PushOperations;
 import org.springframework.mobile.urbanairship.RegistrationOperations;
@@ -40,6 +41,8 @@ import org.springframework.web.client.RestTemplate;
 
 public class UrbanAirshipTemplate implements UrbanAirship {
 
+	private FeedOperations feedOperations;
+	
 	private PartnerOperations partnerOperations;
 	
 	private PushOperations pushOperations;
@@ -66,6 +69,9 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 		initSubApis();
 	}
 
+	public FeedOperations feedOperations() {
+		return feedOperations;
+	}
 	
 	public PartnerOperations partnerOperations() {
 		return partnerOperations;
@@ -133,6 +139,7 @@ public class UrbanAirshipTemplate implements UrbanAirship {
 	}	
 
 	private void initSubApis() {
+		feedOperations = new FeedTemplate(masterKeyRestTemplate);
 		partnerOperations = new PartnerTemplate(restOperations());
 		pushOperations = new PushTemplate(masterKeyRestOperations());
 		registrationOperations = new RegistrationTemplate(restOperations());

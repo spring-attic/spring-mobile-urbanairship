@@ -13,24 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship;
+package org.springframework.mobile.urbanairship.impl;
 
-import org.springframework.web.client.RestOperations;
+public class DownloadUrl {
+	
+	private String contentUrl;
+	
+	private Integer receiptStatus;
+	
+	private String serverResponse;
+	
+	public DownloadUrl(String contentUrl, Integer receiptStatus, String serverResponse) {
+		this.contentUrl = contentUrl;
+		this.receiptStatus = receiptStatus;
+		this.serverResponse = serverResponse;
+	}
 
-public interface UrbanAirship {
+	public String getContentUrl() {
+		return contentUrl;
+	}
 
-	FeedOperations feedOperations();
-	
-	InAppPurchaseOperations inAppPurchaseOperations();
-	
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
+	public Integer getReceiptStatus() {
+		return receiptStatus;
+	}
+
+	public String getServerResponse() {
+		return serverResponse;
+	}
 
 }

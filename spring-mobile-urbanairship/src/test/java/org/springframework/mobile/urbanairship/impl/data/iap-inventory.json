@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Content",
+        "url": "http://testserver/api/app/content/1234/",
+        "icon_url": "http://com.urbanairship.preview.s3.amazonaws.com/content/<app_key>/1234/icon.jpg",
+        "preview_url": "http://com.urbanairship.preview.s3.amazonaws.com/content/<app_key>/1234/preview.jpg",
+        "download_url": "https://go.urbanairship.com/api/app/content/1234/download",
+        "current_revision": "1",
+        "product_id": "1234",
+        "free": false,
+        "file_size": 49137,
+        "description": "Description"
+    },
+    {
+        "name": "Some Content",
+        "url": "http://testserver/api/app/content/1234/",
+        "icon_url": "http://com.urbanairship.preview.s3.amazonaws.com/content/<app_key>/1235/icon.jpg",
+        "preview_url": "http://com.urbanairship.preview.s3.amazonaws.com/content/<app_key>/1235/preview.jpg",
+        "download_url": "https://go.urbanairship.com/api/app/content/1235/download",
+        "current_revision": "3",
+        "product_id": "1235",
+        "free": true,
+        "file_size": 58392,
+        "description": "Some description"
+    }
+]

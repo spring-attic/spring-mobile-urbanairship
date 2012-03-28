@@ -13,24 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.mobile.urbanairship;
+package org.springframework.mobile.urbanairship.impl.json;
 
-import org.springframework.web.client.RestOperations;
+import org.codehaus.jackson.annotate.JsonCreator;
+import org.codehaus.jackson.annotate.JsonProperty;
 
-public interface UrbanAirship {
+abstract class DownloadUrlMixin {
 
-	FeedOperations feedOperations();
-	
-	InAppPurchaseOperations inAppPurchaseOperations();
-	
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
+	@JsonCreator
+	DownloadUrlMixin(
+		@JsonProperty("content_url") String contentUrl,
+		@JsonProperty("receipt_status") Integer receiptStatus,
+		@JsonProperty("server_response") String serverResponse) {}
 
 }

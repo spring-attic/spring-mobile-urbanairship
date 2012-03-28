@@ -15,22 +15,16 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+import java.util.List;
 
-public interface UrbanAirship {
+public interface InAppPurchaseOperations {
 
-	FeedOperations feedOperations();
-	
-	InAppPurchaseOperations inAppPurchaseOperations();
-	
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
+	List<InventoryItem> getInventory();
+
+	String getDownloadUrl(String productId);
+
+	String getDownloadUrl(String productId, ContentReceipt receipt);
+
+	List<Product> checkForUpdates(List<Product> products);
 
 }

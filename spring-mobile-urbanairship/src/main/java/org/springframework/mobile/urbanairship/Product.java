@@ -15,22 +15,29 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+public class Product {
 
-public interface UrbanAirship {
+	private final String productId;
+	
+	private final int currentRevision;
+	
+	private String downloadUrl;
 
-	FeedOperations feedOperations();
+	public Product(String productId, int currentRevision) {
+		this.productId = productId;
+		this.currentRevision = currentRevision;		
+	}
 	
-	InAppPurchaseOperations inAppPurchaseOperations();
+	public String getProductId() {
+		return productId;
+	}
 	
-	PartnerOperations partnerOperations();
+	public int getCurrentRevision() {
+		return currentRevision;
+	}
 	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
+	public String getDownloadUrl() {
+		return downloadUrl;
+	}
 
 }

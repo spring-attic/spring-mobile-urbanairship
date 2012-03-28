@@ -1,0 +1,10 @@
+[
+    {
+        "product_id":"1234",
+        "current_revision":3
+    },
+    {
+        "product_id":"FOOBAR",
+        "current_revision":1
+    }
+]

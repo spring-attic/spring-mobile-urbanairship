@@ -15,22 +15,24 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+@SuppressWarnings("serial")
+public class InvalidContentReceiptException extends RuntimeException {
 
-public interface UrbanAirship {
+	private final Integer receiptStatus;
+	
+	private final String serverResponse;
 
-	FeedOperations feedOperations();
+	public InvalidContentReceiptException(Integer receiptStatus, String serverResponse) {
+		this.receiptStatus = receiptStatus;
+		this.serverResponse = serverResponse;
+	}
 	
-	InAppPurchaseOperations inAppPurchaseOperations();
-	
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
+	public Integer getReceiptStatus() {
+		return receiptStatus;
+	}
+
+	public String getServerResponse() {
+		return serverResponse;
+	}
 
 }

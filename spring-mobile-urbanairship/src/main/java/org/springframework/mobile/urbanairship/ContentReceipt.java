@@ -15,22 +15,30 @@
  */
 package org.springframework.mobile.urbanairship;
 
-import org.springframework.web.client.RestOperations;
+public class ContentReceipt {
 
-public interface UrbanAirship {
+	private final String transactionReceipt;
+	
+	private final String udid;
+	
+	private final String version;
 
-	FeedOperations feedOperations();
-	
-	InAppPurchaseOperations inAppPurchaseOperations();
-	
-	PartnerOperations partnerOperations();
-	
-	PushOperations pushOperations();
-	
-	RestOperations restOperations();
-	
-	RichPushOperations richPushOperations();
-	
-	UserOperations userOperations();
+	public String getTransactionReceipt() {
+		return transactionReceipt;
+	}
 
+	public String getUdid() {
+		return udid;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public ContentReceipt(String transactionReceipt, String udid, String version) {
+		this.transactionReceipt = transactionReceipt;
+		this.udid = udid;
+		this.version = version;
+	}
+	
 }

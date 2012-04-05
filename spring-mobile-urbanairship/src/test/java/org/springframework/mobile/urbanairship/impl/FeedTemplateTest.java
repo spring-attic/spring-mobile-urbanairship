@@ -31,7 +31,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void createFeed() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/"))
 			.andExpect(method(POST))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/feed-create"))))
 			.andRespond(withResponse(jsonResource("data/feed"), responseHeaders));
@@ -43,7 +43,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void createFeed_minimal() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/"))
 			.andExpect(method(POST))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/feed-create-minimal"))))
 			.andRespond(withResponse(jsonResource("data/feed"), responseHeaders));
@@ -65,7 +65,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void getFeeds() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/"))
 			.andExpect(method(GET))
 			.andRespond(withResponse(jsonResource("data/feed-list"), responseHeaders));
 		List<Feed> feeds = urbanAirship.feedOperations().getFeeds();

@@ -18,6 +18,7 @@ package org.springframework.mobile.urbanairship.impl;
 import static org.springframework.mobile.urbanairship.impl.UrbanAirshipTemplate.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
@@ -40,12 +41,13 @@ public class FeedTemplate implements FeedOperations {
 	public Feed createFeed(FeedConfig feedConfig) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<FeedConfig> requestEntity = new HttpEntity<FeedConfig>(feedConfig, headers);
 		return restOperations.exchange(FEED_URL, HttpMethod.POST, requestEntity, Feed.class).getBody();
 	}
 	
 	public Feed getFeed(String feedId) {
-		return restOperations.getForObject(FEED_URL + "/" + feedId, Feed.class);
+		return restOperations.getForObject(FEED_URL + feedId, Feed.class);
 	}
 	
 	public List<Feed> getFeeds() {
@@ -53,14 +55,14 @@ public class FeedTemplate implements FeedOperations {
 	}
 	
 	public void updateFeed(String feedId, FeedConfig feedConfig) {
-		restOperations.put(FEED_URL + "/" + feedId, feedConfig);
+		restOperations.put(FEED_URL + feedId, feedConfig);
 	}
 	
 	public void deleteFeed(String feedId) {
-		restOperations.delete(FEED_URL + "/" + feedId);
+		restOperations.delete(FEED_URL + feedId);
 	}
 	
-	private static final String FEED_URL = URBANAIRSHIP_API_URL + "feeds";
+	private static final String FEED_URL = URBANAIRSHIP_API_URL + "feeds/";
 
 	@SuppressWarnings("serial")
 	private static class FeedList extends ArrayList<Feed> {}

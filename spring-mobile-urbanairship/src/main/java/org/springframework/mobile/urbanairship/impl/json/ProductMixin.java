@@ -25,13 +25,13 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 abstract class ProductMixin {
 
 	@JsonProperty("product_id")
-	private String productId;
+	String productId;
 	
 	@JsonProperty("current_revision")
-	private int currentRevision;
+	int currentRevision;
 
 	@JsonProperty("download_url")
-	private String downloadUrl;
+	String downloadUrl;
 	
 	@JsonCreator
 	ProductMixin(

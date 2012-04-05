@@ -24,7 +24,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 public class RecoveryRequestMixin {
 
 	@JsonProperty("email")
-	private String email;
+	String email;
 	
 	@JsonProperty("udid")
 	String udid;

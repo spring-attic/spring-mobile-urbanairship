@@ -21,6 +21,7 @@ import static org.springframework.test.web.client.RequestMatchers.*;
 import static org.springframework.test.web.client.ResponseCreators.*;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,7 +39,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withOneDeviceToken() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-onetoken"))))
 			.andExpect(method(POST))
@@ -50,7 +51,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withManyDeviceTokens() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-manytokens"))))
 			.andExpect(method(POST))
@@ -62,7 +63,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withOneApid() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-oneapid"))))
 			.andExpect(method(POST))
@@ -74,7 +75,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withManyApids() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-manyapids"))))
 			.andExpect(method(POST))
@@ -86,7 +87,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withOneDevicePin() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-onedevicepin"))))
 			.andExpect(method(POST))
@@ -98,7 +99,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withManyDevicePins() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-manydevicepins"))))
 			.andExpect(method(POST))
@@ -110,7 +111,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withAliases() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withaliases"))))
 			.andExpect(method(POST))
@@ -122,7 +123,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withTags() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withtags"))))
 			.andExpect(method(POST))
@@ -134,7 +135,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withExcludeTokens() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withexcludes"))))
 			.andExpect(method(POST))
@@ -146,7 +147,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withSound() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withsound"))))
 			.andExpect(method(POST))
@@ -158,7 +159,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withBadgeCount() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withbadgecount"))))
 			.andExpect(method(POST))
@@ -170,7 +171,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withBadgeAuto() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withbadgeauto"))))
 			.andExpect(method(POST))
@@ -182,7 +183,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withBadgeIncrement() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withbadgeincrement"))))
 			.andExpect(method(POST))
@@ -194,7 +195,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withBadgeDecrement() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withbadgedecrement"))))
 			.andExpect(method(POST))
@@ -206,7 +207,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void pushNotification_withExtraForAndroid() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withextra"))))
 			.andExpect(method(POST))
@@ -221,7 +222,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 	
 	@Test
 	public void pushNotification_withScheduleFor() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-withschedulefor"))))
 			.andExpect(method(POST))
@@ -235,7 +236,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 	
 	@Test
 	public void pushNotification_withMixedDeviceTypes() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-mixeddevices"))))
 			.andExpect(method(POST))
@@ -259,7 +260,7 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 	
 	@Test
 	public void sendBroadcast() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/broadcast"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/broadcast/"))
 			.andExpect(header("Content-Type", "application/json"))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/push-broadcast"))))
 			.andExpect(method(POST))
@@ -269,10 +270,10 @@ public class PushTemplateTest extends AbstractUrbanAirshipApiTest {
 	
 	@Test
 	public void getStatistics() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/statistics?start=2012-03-10&end=2012-03-10%2B06:00"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/push/stats/?start=2012-04-04+00:00&end=2012-04-06+06:00"))
 			.andExpect(method(GET))
 			.andRespond(withResponse(jsonResource("data/statistics"), responseHeaders));
-		List<PushStatistics> statistics = urbanAirship.pushOperations().getStatistics();
+		List<PushStatistics> statistics = urbanAirship.pushOperations().getStatistics(new Date(1333515600000L), new Date(1333710000000L));
 		assertEquals(6, statistics.size());
 		assertStatistics(statistics.get(0), 1331359200000L, 0, 0, 0, 0);
 		assertStatistics(statistics.get(1), 1331362800000L, 1, 2, 3, 6);

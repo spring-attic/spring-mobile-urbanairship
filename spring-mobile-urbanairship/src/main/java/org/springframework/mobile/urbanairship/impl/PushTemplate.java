@@ -17,7 +17,11 @@ package org.springframework.mobile.urbanairship.impl;
 
 import static org.springframework.mobile.urbanairship.impl.UrbanAirshipTemplate.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.HttpEntity;
@@ -57,21 +61,28 @@ public class PushTemplate implements PushOperations {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<List<Notification>> requestEntity = new HttpEntity<List<Notification>>(notifications, headers);
-		masterKeyRestOperations.exchange(PUSH_URL + "/batch", HttpMethod.POST, requestEntity, String.class);
+		masterKeyRestOperations.exchange(PUSH_URL + "batch", HttpMethod.POST, requestEntity, String.class);
 	}
 	
 	public void sendBroadcast(Broadcast broadcast) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<Broadcast> requestEntity = new HttpEntity<Broadcast>(broadcast, headers);
-		masterKeyRestOperations.exchange(PUSH_URL + "/broadcast", HttpMethod.POST, requestEntity, String.class);
+		masterKeyRestOperations.exchange(PUSH_URL + "broadcast/", HttpMethod.POST, requestEntity, String.class);
 	}
 	
-	public List<PushStatistics> getStatistics() {
-		return (List<PushStatistics>) masterKeyRestOperations.getForObject(PUSH_URL + "/statistics?start=2012-03-10&end=2012-03-10+06:00", PushStatisticsList.class);
+	public List<PushStatistics> getStatistics(Date start, Date end) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd+HH:mm");
+		String startString = format.format(start);
+		String endString = format.format(end);
+		try {
+			return (List<PushStatistics>) masterKeyRestOperations.getForObject(new URI(PUSH_URL + "stats/?start=" + startString + "&end=" + endString), PushStatisticsList.class);
+		} catch (URISyntaxException shouldntHappen) {
+			return null;
+		}		
 	}
 	
-	private static final String PUSH_URL = URBANAIRSHIP_API_URL + "push";
+	private static final String PUSH_URL = URBANAIRSHIP_API_URL + "push/";
 
 	@SuppressWarnings("serial")
 	private static class PushStatisticsList extends ArrayList<PushStatistics> {}

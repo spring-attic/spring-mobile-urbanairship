@@ -15,6 +15,7 @@
  */
 package org.springframework.mobile.urbanairship;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,6 +27,6 @@ public interface PushOperations {
 
 	void sendBroadcast(Broadcast broadcast);
 
-	List<PushStatistics> getStatistics();
+	List<PushStatistics> getStatistics(Date start, Date end);
 	
 }

@@ -17,6 +17,7 @@ package org.springframework.mobile.urbanairship.impl.json;
 
 import java.util.Map;
 
+import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -25,8 +26,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 @JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 abstract class AndroidMixin {
 
-	@JsonProperty("alert")
-	String alert;
+	@JsonCreator
+	AndroidMixin(
+		@JsonProperty("alert") String alert) {}
 	
 	@JsonProperty("extra")
 	Map<String, String> extra;

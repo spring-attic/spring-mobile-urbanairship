@@ -31,13 +31,16 @@ public class Feed {
 
 	private final boolean broadcast;
 	
-	private Feed(String id, String url, String feedUrl, Date lastChecked, FeedNotificationTemplate template, boolean broadcast) {
+	private final boolean airmail;
+	
+	private Feed(String id, String url, String feedUrl, Date lastChecked, FeedNotificationTemplate template, boolean broadcast, boolean airmail) {
 		this.id = id;
 		this.url = url;
 		this.feedUrl = feedUrl;
 		this.lastChecked = lastChecked;
 		this.template = template;
 		this.broadcast = broadcast;
+		this.airmail = airmail;
 	}
 	
 	public String getId() {
@@ -64,5 +67,8 @@ public class Feed {
 		return broadcast;
 	}
 
+	public boolean isAirmail() {
+		return airmail;
+	}
 }
 

@@ -47,7 +47,7 @@ public class FeedTemplate implements FeedOperations {
 	}
 	
 	public Feed getFeed(String feedId) {
-		return restOperations.getForObject(FEED_URL + feedId, Feed.class);
+		return restOperations.getForObject(FEED_URL + feedId + "/", Feed.class);
 	}
 	
 	public List<Feed> getFeeds() {
@@ -55,11 +55,11 @@ public class FeedTemplate implements FeedOperations {
 	}
 	
 	public void updateFeed(String feedId, FeedConfig feedConfig) {
-		restOperations.put(FEED_URL + feedId, feedConfig);
+		restOperations.put(FEED_URL + feedId + "/", feedConfig);
 	}
 	
 	public void deleteFeed(String feedId) {
-		restOperations.delete(FEED_URL + feedId);
+		restOperations.delete(FEED_URL + feedId + "/");
 	}
 	
 	private static final String FEED_URL = URBANAIRSHIP_API_URL + "feeds/";

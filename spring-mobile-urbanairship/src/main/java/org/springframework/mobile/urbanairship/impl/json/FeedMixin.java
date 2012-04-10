@@ -31,6 +31,7 @@ abstract class FeedMixin {
 		@JsonProperty("feed_url") String feedUrl, 
 		@JsonProperty("last_checked") @JsonDeserialize(using=DateDeserializer.class) Date lastChecked, 
 		@JsonProperty("template") FeedNotificationTemplate template, 
-		@JsonProperty("boolean") boolean broadcast) {}
+		@JsonProperty("boolean") boolean broadcast,
+		@JsonProperty("airmail") boolean airmail) {}
 	
 }

@@ -15,16 +15,18 @@
  */
 package org.springframework.mobile.urbanairship.impl.json;
 
+import org.codehaus.jackson.annotate.JsonCreator;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.annotate.JsonPropertyOrder;
 
 @JsonPropertyOrder({"content-type", "body"})
 abstract class BlackberryMixin {
 
+	@JsonCreator
+	BlackberryMixin(
+		@JsonProperty("body") String body) {}
+	
 	@JsonProperty("content-type")
 	String contentType;
-	
-	@JsonProperty("body")
-	String body;
 	
 }

@@ -55,7 +55,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 
 	@Test
 	public void getFeed() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/12345"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/12345/"))
 			.andExpect(method(GET))
 			.andRespond(withResponse(jsonResource("data/feed"), responseHeaders));
 		Feed feed = urbanAirship.feedOperations().getFeed("12345");
@@ -83,7 +83,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 	
 	@Test
 	public void updateFeed() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/12345"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/12345/"))
 			.andExpect(method(PUT))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/feed-create"))))
 			.andRespond(withResponse("", responseHeaders));
@@ -94,7 +94,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 	
 	@Test
 	public void deleteFeed() {
-		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/12345"))
+		masterKeyMockServer.expect(requestTo("https://go.urbanairship.com/api/feeds/12345/"))
 			.andExpect(method(DELETE))
 			.andRespond(withResponse("", responseHeaders, HttpStatus.NO_CONTENT, ""));
 		urbanAirship.feedOperations().deleteFeed("12345");

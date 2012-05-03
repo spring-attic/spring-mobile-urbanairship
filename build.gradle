@@ -17,6 +17,7 @@ configure(allprojects) {
     sourceCompatibility=1.5
     targetCompatibility=1.5
 
+    hamcrestVersion = '1.2.1'
     httpComponentsVersion = '4.1.2'
     jacksonVersion = '1.9.3'
     junitVersion = '4.10'
@@ -39,6 +40,7 @@ configure(allprojects) {
     }
 
     dependencies {
+        testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
         testCompile "junit:junit-dep:$junitVersion"
         testCompile "org.mockito:mockito-all:$mockitoVersion"
         testCompile "org.springframework:spring-test:$springVersion"

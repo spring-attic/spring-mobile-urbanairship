@@ -52,7 +52,7 @@ public class PartnerTemplateTest extends AbstractUrbanAirshipApiTest {
 		assertEquals("c2dmToken", apps.get(0).getC2dmAuthToken());
 		assertEquals("bbUser", apps.get(0).getBlackberryUsername());
 		assertEquals("bbPassword", apps.get(0).getBlackberryPassword());
-		assertEquals("http://bbpush.com", apps.get(0).getBlackberryPushUrl());
+		assertEquals("https://bbpush.com", apps.get(0).getBlackberryPushUrl());
 		assertFalse(apps.get(0).isRichPushEnabled());
 		assertEquals("com.foo.baz", apps.get(1).getName());
 		assertEquals("ABC321", apps.get(1).getKey());
@@ -66,7 +66,7 @@ public class PartnerTemplateTest extends AbstractUrbanAirshipApiTest {
 		assertEquals("c2dmToken", apps.get(1).getC2dmAuthToken());
 		assertEquals("bbUser", apps.get(1).getBlackberryUsername());
 		assertEquals("bbPassword", apps.get(1).getBlackberryPassword());
-		assertEquals("http://bbpush.com", apps.get(1).getBlackberryPushUrl());
+		assertEquals("https://bbpush.com", apps.get(1).getBlackberryPushUrl());
 		assertFalse(apps.get(1).isRichPushEnabled());		
 		mockServer.verify();
 	}

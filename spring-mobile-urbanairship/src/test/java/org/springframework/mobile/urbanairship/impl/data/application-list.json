@@ -12,7 +12,7 @@
         "c2dm_auth_token": "c2dmToken",
         "blackberry_username": "bbUser",
         "blackberry_password": "bbPassword",
-        "blackberry_pushurl": "http://bbpush.com",
+        "blackberry_pushurl": "https://bbpush.com",
         "richpush_enabled": false
     },
     {
@@ -28,7 +28,7 @@
         "c2dm_auth_token": "c2dmToken",
         "blackberry_username": "bbUser",
         "blackberry_password": "bbPassword",
-        "blackberry_pushurl": "http://bbpush.com",
+        "blackberry_pushurl": "https://bbpush.com",
         "richpush_enabled": false
     }    
 ]

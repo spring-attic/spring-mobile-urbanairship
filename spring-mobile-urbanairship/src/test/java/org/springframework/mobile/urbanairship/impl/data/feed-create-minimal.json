@@ -1,5 +1,5 @@
 {
-    "feed_url":"http://example.com/atom.xml",
+    "feed_url":"https://example.com/atom.xml",
     "template":{
         "aps":{"alert":"New item from some place! {{ title }}"},
         "android":{"alert":"New item from some place! {{ title }}"},

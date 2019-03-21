@@ -35,7 +35,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(method(POST))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/feed-create"))))
 			.andRespond(withResponse(jsonResource("data/feed"), responseHeaders));
-		FeedConfig feedConfig = FeedConfig.builder("http://example.com/atom.xml", "New item from some place! {{ title }}").sound("cat.caf").badge(1).broadcast(true).build();
+		FeedConfig feedConfig = FeedConfig.builder("https://example.com/atom.xml", "New item from some place! {{ title }}").sound("cat.caf").badge(1).broadcast(true).build();
 		Feed feed = urbanAirship.feedOperations().createFeed(feedConfig);
 		assertSingleFeed(feed);
 		masterKeyMockServer.verify();
@@ -47,7 +47,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(method(POST))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/feed-create-minimal"))))
 			.andRespond(withResponse(jsonResource("data/feed"), responseHeaders));
-		FeedConfig feedConfig = FeedConfig.builder("http://example.com/atom.xml", "New item from some place! {{ title }}").build();
+		FeedConfig feedConfig = FeedConfig.builder("https://example.com/atom.xml", "New item from some place! {{ title }}").build();
 		Feed feed = urbanAirship.feedOperations().createFeed(feedConfig);
 		assertSingleFeed(feed);
 		masterKeyMockServer.verify();
@@ -87,7 +87,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(method(PUT))
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/feed-create"))))
 			.andRespond(withResponse("", responseHeaders));
-		FeedConfig feedConfig = FeedConfig.builder("http://example.com/atom.xml", "New item from some place! {{ title }}").sound("cat.caf").badge(1).broadcast(true).build();
+		FeedConfig feedConfig = FeedConfig.builder("https://example.com/atom.xml", "New item from some place! {{ title }}").sound("cat.caf").badge(1).broadcast(true).build();
 		urbanAirship.feedOperations().updateFeed("12345", feedConfig);
 		masterKeyMockServer.verify();
 	}
@@ -105,7 +105,7 @@ public class FeedTemplateTest extends AbstractUrbanAirshipApiTest {
 		assertEquals("12345", feed.getId());
 		assertEquals("https://go.urbanairship.com/api/feeds/12345/", feed.getUrl());
 //		assertEquals(1268106741000L, feed.getLastChecked().getTime());
-		assertEquals("http://example.com/atom.xml", feed.getFeedUrl());
+		assertEquals("https://example.com/atom.xml", feed.getFeedUrl());
 		assertEquals(1, feed.getTemplate().getAps().getBadge());
 		assertEquals("cat.caf", feed.getTemplate().getAps().getSound());
 		assertEquals("New item from some place! {{ title }}", feed.getTemplate().getAps().getAlert());

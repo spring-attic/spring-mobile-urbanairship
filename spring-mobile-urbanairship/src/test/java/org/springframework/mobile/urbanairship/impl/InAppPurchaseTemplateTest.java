@@ -66,7 +66,7 @@ public class InAppPurchaseTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(method(POST))
 			.andRespond(withResponse(jsonResource("data/iap-temporary-url"), responseHeaders));
 		String downloadUrl = urbanAirship.inAppPurchaseOperations().getDownloadUrl("12345");
-		assertEquals("http://somesite/content/download/12345", downloadUrl);
+		assertEquals("https://somesite/content/download/12345", downloadUrl);
 		mockServer.verify();
 	}
 
@@ -77,7 +77,7 @@ public class InAppPurchaseTemplateTest extends AbstractUrbanAirshipApiTest {
 			.andExpect(body(readCompactedJsonResource(jsonResource("data/iap-download-paid"))))
 			.andRespond(withResponse(jsonResource("data/iap-temporary-url"), responseHeaders));
 		String downloadUrl = urbanAirship.inAppPurchaseOperations().getDownloadUrl("12345", new ContentReceipt("receipt_string", "udid1", "1.0"));
-		assertEquals("http://somesite/content/download/12345", downloadUrl);
+		assertEquals("https://somesite/content/download/12345", downloadUrl);
 		mockServer.verify();
 	}
 

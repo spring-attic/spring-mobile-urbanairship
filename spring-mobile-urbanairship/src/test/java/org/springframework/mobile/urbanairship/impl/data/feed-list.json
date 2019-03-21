@@ -3,7 +3,7 @@
 	    "url": "https://go.urbanairship.com/api/feeds/12345/",
 	    "id": "12345",
 	    "last_checked": "2010-03-08 21:52:21",
-	    "feed_url": "http://example.com/atom.xml",
+	    "feed_url": "https://example.com/atom.xml",
 	    "template": {
 	        "aps": {
 	            "badge": 1,
